@@ -14,10 +14,11 @@ class ProcessTheClient(threading.Thread):
 	def run(self):
 		while True:
 			data = self.connection.recv(32)
+			#cek request
 			if data.startswith('TIME') and data.endswith('\r\n'):
-        timenow = time.strftime("%H:%M:%S")
-        response = f"JAM {timenow}\r\n"
-        logging.warning(f"sending {response} to {self.address}")
+        			timenow = time.strftime("%H:%M:%S")
+        			response = f"JAM {timenow}\r\n"
+        			logging.warning(f"sending {response} to {self.address}")
 				self.connection.sendall(response.encode('utf-8'))
 			else:
 				break
