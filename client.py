@@ -13,7 +13,7 @@ def kirim_data():
     try:
         # Send data
         message = 'TIME\r\n'
-        logging.warning(f"[CLIENT] sending {message}")
+        logging.warning(f"[Client] sending {message}")
         sock.sendall(message.encode('utf-8'))
         # Look for the response
         amount_received = 0
@@ -21,7 +21,7 @@ def kirim_data():
         while amount_received < amount_expected:
             data = sock.recv(1024).decode('utf-8')
             amount_received += len(data)
-            logging.warning(f"[DITERIMA DARI SERVER] {data}")
+            logging.warning(f"[Server] diterima {data}")
     finally:
         logging.warning("closing")
         sock.close()
